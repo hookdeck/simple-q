@@ -1,6 +1,6 @@
 import SimplePubSub from "@hck23/simple-q";
 import { useId, useState } from "react";
-import { Button } from "../../../demo3/src/components/Button";
+import { Button } from "./Button";
 
 export function LiveData() {
   let id = useId();

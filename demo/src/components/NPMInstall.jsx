@@ -1,4 +1,4 @@
-import { Button } from "../../../demo3/src/components/Button";
+import { Button } from "./Button";
 
 export function NPMInstall() {
   return (
