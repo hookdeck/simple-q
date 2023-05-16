@@ -1,0 +1,32 @@
+{
+  "name": "simple-pubsub",
+  "version": "1.0.0",
+  "description": "Simple pubsub",
+  "repository": "https://github.com/hookdeck/simple-pubsub",
+  "homepage": "https://github.com/hookdeck/simple-pubsub",
+  "author": "Hookdeck",
+  "license": "MIT",
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "2.8.3",
+    "@parcel/transformer-typescript-tsc": "^2.8.3",
+    "@parcel/transformer-typescript-types": "2.8.3",
+    "@types/ws": "^8.5.4",
+    "eslint": "^8.40.0",
+    "parcel": "^2.8.3",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "isomorphic-ws": "^5.0.0",
+    "ws": "^8.13.0"
+  }
+}
