@@ -27,7 +27,7 @@ export default class SimplePubSub {
   private async newConnection(channel_id: string) {
     if (this.connection === null) {
       const data = {
-        name: `connection-${channel_id}`,
+        name: channel_id,
         source: {
           name: `source-${channel_id}`,
         },
