@@ -71,18 +71,18 @@ export default class SimplePubSub {
       );
     }
 
-    this.ws_by_channel[channel_id].onopen = () => {
-      console.log("connected");
-    };
+    // this.ws_by_channel[channel_id].onopen = () => {
+    // //   console.log("connected");
+    // };
 
     this.ws_by_channel[channel_id].onerror = (event: WebSocket.ErrorEvent) => {
-      console.log("error", event);
+      // console.log("error", event);
       throw event;
     };
 
     this.ws_by_channel[channel_id].onmessage = (event: WebSocket.MessageEvent) => {
       const data = JSON.parse(event.data.toString());
-      console.log("message", data);
+      // console.log("message", data);
       callback(data);
     };
   }

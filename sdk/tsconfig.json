@@ -5,8 +5,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "isolatedModules": true,
-    "allowImportingTsExtensions": true
-  },, "tests/pub.test.ts"
+    "isolatedModules": true
+  },
   "include": ["src/**/*"]
 }

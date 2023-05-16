@@ -1,15 +1,23 @@
 {
-  "name": "simple-pubsub",
-  "version": "1.0.0",
-  "description": "Simple pubsub",
-  "repository": "https://github.com/hookdeck/simple-pubsub",
-  "homepage": "https://github.com/hookdeck/simple-pubsub",
+  "name": "@hck23/simple-q",
+  "version": "1.0.7",
+  "description": "Simple-Q",
+  "repository": "https://github.com/hookdeck/simple-q",
+  "homepage": "https://github.com/hookdeck/simple-q",
   "author": "Hookdeck",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
+  "keywords": [
+    "queue",
+    "publish",
+    "subscribe",
+    "hookdeck",
+    "simple-q",
+    "pubsub"
+  ],
   "scripts": {
     "watch": "parcel watch",
     "build": "parcel build"
