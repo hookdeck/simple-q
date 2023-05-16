@@ -1,0 +1,12 @@
+name = "server"
+main = "src/index.ts"
+compatibility_date = "2023-05-16"
+
+[durable_objects]
+bindings = [
+  { name = "proxies", class_name = "Proxy" },
+]
+
+[[migrations]]
+tag = "v1" # Should be unique for each entry
+new_classes = ["Proxy"]

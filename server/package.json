@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "wrangler": "^2.20.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230511.0",
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.0"
+  }
+}
