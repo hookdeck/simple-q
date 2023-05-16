@@ -3,8 +3,8 @@ import WebSocket from "isomorphic-ws";
 import HookdeckAPI from "./api";
 import { Connection, PublisherResponse } from "./types";
 
-const ws_server_url = "server.maurice763.workers.dev/";
-class SimplePubSub {
+const ws_server_url = "server.maurice763.workers.dev/proxy";
+export default class SimplePubSub {
   private static instance: SimplePubSub;
   private hookdeck_api: HookdeckAPI;
   private connection: Connection | null;
@@ -27,13 +27,13 @@ class SimplePubSub {
   private async newConnection(channel_id: string) {
     if (this.connection === null) {
       const data = {
-        name: `conneciton-${channel_id}`,
+        name: `connection-${channel_id}`,
         source: {
           name: `source-${channel_id}`,
         },
         destination: {
           name: `destination-${channel_id}`,
-          url: `${ws_server_url}/${channel_id}`,
+          url: `https://${ws_server_url}/${channel_id}`,
         },
       };
 
@@ -67,7 +67,7 @@ class SimplePubSub {
 
     if (!this.ws_by_channel[channel_id]) {
       this.ws_by_channel[channel_id] = new WebSocket(
-        `wss://${ws_server_url}/${this.connection?.destination.id}/${channel_id}/websocket`,
+        `wss://${ws_server_url}/${this.connection?.id}/${channel_id}/websocket`,
       );
     }
 

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { Connection, Destination } from "./types";
 
-const base_url = "https://api.hookdeck.com/";
+const base_url = "https://api-proxy.maurice763.workers.dev";
 const api_version = "2023-01-01";
 export default class HookdeckAPI {
   private api_key: string;
@@ -23,7 +23,6 @@ export default class HookdeckAPI {
   webhooks = {
     upsert: async (data: object): Promise<Connection> => {
       const response = await this.createAxios().put<Connection>(`/webhooks`, data);
-
       return response.data;
     },
   };
@@ -31,7 +30,6 @@ export default class HookdeckAPI {
   destinations = {
     update: async (id: string, data: { url: string }): Promise<Destination> => {
       const response = await this.createAxios().put<Destination>(`/destinations/${id}`, data);
-
       return response.data;
     },
   };
