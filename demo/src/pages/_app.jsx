@@ -1,21 +1,21 @@
-import { MDXProvider } from '@mdx-js/react'
-import { ThemeProvider } from 'next-themes'
-import Head from 'next/head'
+import { MDXProvider } from "@mdx-js/react";
+import { ThemeProvider } from "next-themes";
+import Head from "next/head";
 
-import { Layout } from '@/components/Layout'
-import * as mdxComponents from '@/components/mdx'
+import { Layout } from "@/components/Layout";
+import * as mdxComponents from "@/components/mdx";
 
-import '@/styles/tailwind.css'
-import 'focus-visible'
+import "@/styles/tailwind.css";
+import "focus-visible";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Commit - Open-source Git client for macOS minimalists</title>
+        <title>SimpleQ - Open-source queueing system</title>
         <meta
           name="description"
-          content="Commit is a lightweight Git client you can open from anywhere any time you’re ready to commit your work with a single keyboard shortcut. It’s fast, beautiful, and completely unnecessary."
+          content="SimpleQ is a simple, fast, and elegant open-source queueing system for Node.js and broswers."
         />
       </Head>
       <ThemeProvider attribute="class" disableTransitionOnChange>
@@ -26,5 +26,5 @@ export default function App({ Component, pageProps }) {
         </MDXProvider>
       </ThemeProvider>
     </>
-  )
+  );
 }

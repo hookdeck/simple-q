@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 function ThemeIcon(props) {
   return (
@@ -10,30 +10,29 @@ function ThemeIcon(props) {
         d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-5-8a5 5 0 0 0 5 5V7a5 5 0 0 0-5 5Z"
       />
     </svg>
-  )
+  );
 }
 
 export function ThemeToggle() {
-  let [mounted, setMounted] = useState(false)
-  let { resolvedTheme, setTheme } = useTheme()
-  let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
+  let [mounted, setMounted] = useState(false);
+  let { resolvedTheme, setTheme } = useTheme();
+  let otherTheme = resolvedTheme === "dark" ? "light" : "dark";
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
   return (
     <button
       type="button"
       className="group absolute right-4 top-4 z-50 -m-2.5 p-2.5"
-      onClick={() => setTheme(otherTheme)}
-    >
+      onClick={() => setTheme(otherTheme)}>
       <span className="sr-only">Switch to {otherTheme} theme</span>
       <ThemeIcon className="h-6 w-6 fill-white opacity-50 transition-opacity group-hover:opacity-100 lg:fill-gray-900 lg:dark:fill-white" />
     </button>
-  )
+  );
 }

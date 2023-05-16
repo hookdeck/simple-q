@@ -1,5 +1,5 @@
-import { useEffect, useId, useRef } from 'react'
-import { animate, timeline } from 'motion'
+import { animate, timeline } from "motion";
+import { useEffect, useId, useRef } from "react";
 
 const stars = [
   // [cx, cy, dim, blur]
@@ -37,7 +37,7 @@ const stars = [
   [785, 158, true],
   [832, 146, true, true],
   [852, 89],
-]
+];
 
 const constellations = [
   [
@@ -61,14 +61,14 @@ const constellations = [
     [823, 164],
     [803, 120],
   ],
-]
+];
 
 function Star({ blurId, point: [cx, cy, dim, blur] }) {
-  let groupRef = useRef()
-  let ref = useRef()
+  let groupRef = useRef();
+  let ref = useRef();
 
   useEffect(() => {
-    let delay = Math.random() * 2
+    let delay = Math.random() * 2;
 
     let animations = [
       animate(groupRef.current, { opacity: 1 }, { duration: 4, delay }),
@@ -81,18 +81,18 @@ function Star({ blurId, point: [cx, cy, dim, blur] }) {
         {
           delay,
           duration: Math.random() * 2 + 2,
-          direction: 'alternate',
+          direction: "alternate",
           repeat: Infinity,
-        }
+        },
       ),
-    ]
+    ];
 
     return () => {
       for (let animation of animations) {
-        animation.cancel()
+        animation.cancel();
       }
-    }
-  }, [dim])
+    };
+  }, [dim]);
 
   return (
     <g ref={groupRef} className="opacity-0">
@@ -109,33 +109,26 @@ function Star({ blurId, point: [cx, cy, dim, blur] }) {
         filter={blur ? `url(#${blurId})` : undefined}
       />
     </g>
-  )
+  );
 }
 
 function Constellation({ points }) {
-  let ref = useRef()
+  let ref = useRef();
   let uniquePoints = points.filter(
-    (point, pointIndex) =>
-      points.findIndex((p) => String(p) === String(point)) === pointIndex
-  )
-  let isFilled = uniquePoints.length !== points.length
+    (point, pointIndex) => points.findIndex((p) => String(p) === String(point)) === pointIndex,
+  );
+  let isFilled = uniquePoints.length !== points.length;
 
   useEffect(() => {
     let sequence = timeline([
-      [
-        ref.current,
-        { strokeDashoffset: 0, visibility: 'visible' },
-        { duration: 5, delay: Math.random() * 3 + 2 },
-      ],
-      ...(isFilled
-        ? [[ref.current, { fill: 'rgb(255 255 255 / 0.02)' }, { duration: 1 }]]
-        : []),
-    ])
+      [ref.current, { strokeDashoffset: 0, visibility: "visible" }, { duration: 5, delay: Math.random() * 3 + 2 }],
+      ...(isFilled ? [[ref.current, { fill: "rgb(255 255 255 / 0.02)" }, { duration: 1 }]] : []),
+    ]);
 
     return () => {
-      sequence.cancel()
-    }
-  }, [isFilled])
+      sequence.cancel();
+    };
+  }, [isFilled]);
 
   return (
     <>
@@ -147,26 +140,25 @@ function Constellation({ points }) {
         strokeDashoffset={1}
         pathLength={1}
         fill="transparent"
-        d={`M ${points.join('L')}`}
+        d={`M ${points.join("L")}`}
         className="invisible"
       />
       {uniquePoints.map((point, pointIndex) => (
         <Star key={pointIndex} point={point} />
       ))}
     </>
-  )
+  );
 }
 
 export function StarField() {
-  let blurId = useId()
+  let blurId = useId();
 
   return (
     <svg
       viewBox="0 0 881 211"
       fill="white"
       aria-hidden="true"
-      className="pointer-events-none absolute -right-44 top-14 w-[55.0625rem] origin-top-right rotate-[30deg] overflow-visible opacity-70"
-    >
+      className="pointer-events-none absolute -right-44 top-14 w-[55.0625rem] origin-top-right rotate-[30deg] overflow-visible opacity-70">
       <defs>
         <filter id={blurId}>
           <feGaussianBlur in="SourceGraphic" stdDeviation=".5" />
@@ -179,5 +171,5 @@ export function StarField() {
         <Star key={pointIndex} point={point} blurId={blurId} />
       ))}
     </svg>
-  )
+  );
 }
