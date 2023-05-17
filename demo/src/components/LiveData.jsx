@@ -1,3 +1,5 @@
+"use client";
+
 import SimplePubSub from "@hck23/simple-q";
 import { useId, useState } from "react";
 import { Button } from "./Button";
@@ -8,15 +10,14 @@ export function LiveData() {
   const [subscribed, setSubscribed] = useState(false);
   const [form_data, setFormData] = useState({ api_key: "", channel_id: "channel_1" });
   const [live_data, setLiveData] = useState([]);
-  console.log(live_data);
 
   const handleSubscribe = (api_key, channel_id) => {
     (async () => {
       setLoading(true);
-      const simpleq = SimplePubSub.init("091d6cw8whdvpr1njbn6xyrbzp4vftxf30xdcxoy9nse3n7fn8");
-
+      const ws = SimplePubSub.init("091d6cw8whdvpr1njbn6xyrbzp4vftxf30xdcxoy9nse3n7fn8");
+      console.log("LiveData.jsx #20: ", "subscribing...");
       try {
-        await simpleq.subscribe("channel_2", (message) => {
+        await ws.subscribe("channel_2", (message) => {
           console.log("LiveData.jsx #18: ", message);
           setData((prev) => {
             const sliced = prev.slice(0, 50);
@@ -26,7 +27,7 @@ export function LiveData() {
         setSubscribed(true);
       } catch (error) {
         setSubscribed(false);
-        console.log(err);
+        console.log(error);
       } finally {
         setLoading(false);
       }
